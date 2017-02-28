@@ -12,17 +12,26 @@ import math
 
 def main():
     ten_numbers = [0, 1]
-    for i in range(0, 10):
+    for i in xrange(0, 10):
         b = ten_numbers[-1] + ten_numbers[-2]
         ten_numbers.append(b)
     return sum(ten_numbers)
+
+
+def fib_series(n):
+    """ nth element of fibo series. """
+    x, y, number = 0, 1, []
+    for i in xrange(n):
+        x, y = y, x+y
+        number.append(y)
+    return number
 
 
 def method1():
     fib = [0, 1]
     counter = 0
     num = []
-    for i in range(1, 50):
+    for i in xrange(1, 50):
         if (counter < 4000000) and (counter % 2 == 0):
             num.append(counter)
         s = fib[-1] + fib[-2]
@@ -35,7 +44,7 @@ def method2():
     """
     this will give the total number of fibnocci series in the list.
     """
-    fib = lambda n: reduce(lambda x, _: x+[x[-1]+x[-2]], range(n-1), [0, 1])
+    fib = lambda n: reduce(lambda x, _: x+[x[-1]+x[-2]], xrange(n-1), [0, 1])
     return fib(10)
 
 
