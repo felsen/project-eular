@@ -30,9 +30,9 @@ if the number is divisible by 13. Then 13 is the Prime Factor.
 
 """
 
-from __future__ import division
+"""from __future__ import division
 
-number = 13195
+number = 13195"""
 
 """
 Rule No 1:
@@ -115,3 +115,26 @@ Rule No 6:
 Thirteen is the Prime Factor.
 
 """
+
+
+""" finding the prime numbers between 0, 100 """
+
+
+def prime(number):
+    """
+    Find all the prime number's between 2 to 100.
+    """
+    prime_lst = []
+    for num in range(2, number + 1):
+        if num > 1:
+            for i in range(2, num):
+                if (num % i) == 0:
+                    break
+            else:
+                prime_lst.append(num)
+    return prime_lst
+
+
+if __name__ == "__main__":
+    print prime(100)
+
