@@ -135,6 +135,20 @@ def prime(number):
     return prime_lst
 
 
+def prime_method1():
+    """
+    Finding all the prime numbers between 2 to 100.
+    """
+    target, number = 0, range(2, 100)
+    while number[target] < number[-1]:
+        for each_num in number:
+            if (each_num % number[target] == 0) and (number[target] < each_num):
+                number.remove(each_num)
+        target += 1
+    return number
+
+
 if __name__ == "__main__":
-    print prime(100)
+    print(prime(100))
+    print(prime_method1())
 
