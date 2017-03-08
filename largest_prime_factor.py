@@ -135,11 +135,11 @@ def prime(number):
     return prime_lst
 
 
-def prime_method1():
+def prime_method1(start, end):
     """
     Finding all the prime numbers between 2 to 100.
     """
-    target, number = 0, range(2, 100)
+    target, number = 0, range(start, end + 1)
     while number[target] < number[-1]:
         for each_num in number:
             if (each_num % number[target] == 0) and (number[target] < each_num):
@@ -148,7 +148,19 @@ def prime_method1():
     return number
 
 
+def is_prime(num):
+    """
+    Find the given number is prime number or not.
+    """
+    prime_lst = prime_method1(2, num+1)
+    result = "{} not a prime number".format(num)
+    if num in prime_lst:
+        result = "{} is prime number".format(num)
+    return result
+
+
 if __name__ == "__main__":
-    print(prime(100))
-    print(prime_method1())
+    print(prime(1000))
+    print(prime_method1(2, 1000))
+    print is_prime(165)
 
