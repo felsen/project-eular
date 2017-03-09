@@ -165,8 +165,26 @@ def prime_factor(num):
     Finding the prime factor of given number.
     """
     prime_or_not = is_prime(num)
-    
+    if prime_or_not:
+        print None
     return prime_or_not
+
+
+def primes(n):
+    """
+    Prime Factor algorithm from:
+    http://stackoverflow.com/questions/16996217/prime-factorization-list
+    """
+    primfac = []
+    d = 2
+    while d*d <= n:
+        while (n % d) == 0:
+            primfac.append(d)
+            n //= d
+        d += 1
+    if n > 1:
+        primfac.append(n)
+    return primfac
 
 
 if __name__ == "__main__":
@@ -174,3 +192,4 @@ if __name__ == "__main__":
     print(prime_method1(2, 1000))
     print is_prime(165)
     print prime_factor(189)
+    print primes(27)
