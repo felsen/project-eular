@@ -155,41 +155,34 @@ def is_prime(num):
     """
     prime_lst = prime_method1(2, num+1)
     result = False  # "{} not a prime number".format(num)
-    if num in prime_lst:
+    if not (num in prime_lst):
         result = True  # "{} is prime number".format(num)
     return result
 
 
 def prime_factor(num):
     """
-    Finding the prime factor of given number.
-    """
-    prime_or_not = is_prime(num)
-    if prime_or_not:
-        print None
-    return prime_or_not
-
-
-def primes(n):
-    """
     Prime Factor algorithm from:
     http://stackoverflow.com/questions/16996217/prime-factorization-list
+    But Memory Error when we go for more then 10000.
     """
+    prime_or_not = is_prime(num)
     primfac = []
-    d = 2
-    while d*d <= n:
-        while (n % d) == 0:
-            primfac.append(d)
-            n //= d
-        d += 1
-    if n > 1:
-        primfac.append(n)
-    return primfac
+    inc_d = 2
+    if prime_or_not:
+        while inc_d * inc_d <= num:
+            while (num % inc_d) == 0:
+                primfac.append(inc_d)
+                num //= inc_d
+            inc_d += 1
+        if num > 1:
+            primfac.append(num)
+    return list(set(primfac))
 
 
 if __name__ == "__main__":
     print(prime(1000))
     print(prime_method1(2, 1000))
     print is_prime(165)
-    print prime_factor(189)
-    print primes(27)
+    print prime_factor(2857)
+    print prime_factor(19999)
