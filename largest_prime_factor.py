@@ -39,7 +39,7 @@ Rule No 1:
 
 5 / 2 = 2.5
 
-Two is not a Prime Number.
+Two is not a Prime Factor.
 
 """
 
@@ -142,7 +142,8 @@ def prime_method1(start, end):
     target, number = 0, range(start, end + 1)
     while number[target] < number[-1]:
         for each_num in number:
-            if (each_num % number[target] == 0) and (number[target] < each_num):
+            if (each_num % number[target] == 0) and (
+                    number[target] < each_num):
                 number.remove(each_num)
         target += 1
     return number
@@ -153,14 +154,23 @@ def is_prime(num):
     Find the given number is prime number or not.
     """
     prime_lst = prime_method1(2, num+1)
-    result = "{} not a prime number".format(num)
+    result = False  # "{} not a prime number".format(num)
     if num in prime_lst:
-        result = "{} is prime number".format(num)
+        result = True  # "{} is prime number".format(num)
     return result
+
+
+def prime_factor(num):
+    """
+    Finding the prime factor of given number.
+    """
+    prime_or_not = is_prime(num)
+    
+    return prime_or_not
 
 
 if __name__ == "__main__":
     print(prime(1000))
     print(prime_method1(2, 1000))
     print is_prime(165)
-
+    print prime_factor(189)
